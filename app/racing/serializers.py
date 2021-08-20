@@ -33,3 +33,8 @@ class DriverSerializer(serializers.ModelSerializer):
         model = Driver
         fields = ('name', 'salaryinmill', 'nationality', 'car', 'rating')
         read_only_fields = ('name',)
+
+
+class DriverDetailSerializer(DriverSerializer):
+    rating = RatingSerializer(many=True, read_only=True)
+    car = CarSerializer(many=True, read_only=True)
