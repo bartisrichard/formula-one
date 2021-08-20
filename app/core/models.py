@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, \
     PermissionsMixin
+from django.conf import settings
 
 
 class UserManager(BaseUserManager):
@@ -32,3 +33,17 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
+
+
+class Car(models.Model):
+    name = models.CharField(max_length=255)
+    enginesupplier = models.CharField(max_length=255)
+    performance = models.IntegerField()
+    wear = models.IntegerField()
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+
+    def __str__(self):
+        return self.name
