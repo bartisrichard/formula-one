@@ -50,3 +50,16 @@ class ModelTests(TestCase):
         )
 
         self.assertEqual(str(car), car.name)
+
+    def test_rating_str(self):
+        rating = models.Rating.objects.create(
+            user=sample_user(),
+            name="carlos_sainz_rating",
+            overall=87,
+            experience=69,
+            racecraft=88,
+            awareness=94,
+            pace=85,
+        )
+
+        self.assertEqual(str(rating), rating.name)

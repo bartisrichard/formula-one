@@ -47,3 +47,19 @@ class Car(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Rating(models.Model):
+    name = models.CharField(max_length=255)
+    overall = models.IntegerField()
+    experience = models.IntegerField()
+    racecraft = models.IntegerField()
+    awareness = models.IntegerField()
+    pace = models.IntegerField()
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+
+    def __str__(self):
+        return self.name
