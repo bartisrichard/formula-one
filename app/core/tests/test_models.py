@@ -7,6 +7,12 @@ from core import models
 def sample_user(email='test@acetech.dev', password='testpass'):
     return get_user_model().objects.create_user(email, password)
 
+"""def sample_car(name='Sample Car',enginesupplier='Sample Company',performance=50,wear=50):
+    return get_car_model().objects.create_car(name, enginesupplier, performance, wear)
+
+def sample_rating(name="sample rating",overall=50,experience=50,racecraft=50,awareness=50,pace=50):
+    return get_rating_model().objects.create_rating(name, overall, experience, racecraft, awareness, pace)"""
+
 
 class ModelTests(TestCase):
 
@@ -63,3 +69,15 @@ class ModelTests(TestCase):
         )
 
         self.assertEqual(str(rating), rating.name)
+
+    """def test_driver_str(self):
+        driver = models.Driver.objects.create(
+            user=sample_user(),
+            name = "Carlos_Sainz",
+            salaryinmill = 10,
+            nationality = "Spanish",
+            car = sample_car(),
+            rating = sample_rating(),
+        )
+
+        self.assertEqual(str(driver), driver.title)"""

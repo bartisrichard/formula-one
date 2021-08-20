@@ -63,3 +63,18 @@ class Rating(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Driver(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+    name = models.CharField(max_length=255)
+    salaryinmill = models.IntegerField()
+    nationality = models.CharField(max_length=255)
+    car = models.OneToOneField('Car', on_delete=models.CASCADE)
+    rating = models.OneToOneField('Rating', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title

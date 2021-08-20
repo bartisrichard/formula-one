@@ -7,6 +7,7 @@ from racing import views
 router = DefaultRouter()
 router.register('cars', views.CarViewSet)
 router.register('ratings', views.RatingViewSet)
+router.register('drivers', views.DriverViewSet)
 
 app_name = 'racing'
 
