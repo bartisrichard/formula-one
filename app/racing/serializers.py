@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from core.models import Car, Rating, Driver
+from core.models import Car, Rating, Driver, Team
 
 
 class CarSerializer(serializers.ModelSerializer):
@@ -38,3 +38,19 @@ class DriverSerializer(serializers.ModelSerializer):
 class DriverDetailSerializer(DriverSerializer):
     rating = RatingSerializer(many=True, read_only=True)
     car = CarSerializer(many=True, read_only=True)
+
+
+class TeamSerializer(serializers.ModelSerializer):
+    drivers = serializers.PrimaryKeyRelatedField(
+        many=True,
+        queryset=Driver.objects.all()
+    )
+
+    class Meta:
+        model = Team
+        fields = ('name', 'principal', 'income', 'drivers')
+        read_only_fields = ('name',)
+
+
+class TeamDetailSerializer(TeamSerializer):
+    drivers = DriverSerializer(many=True, read_only=True)

@@ -78,3 +78,17 @@ class Driver(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Team(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+    name = models.CharField(max_length=255)
+    principal = models.CharField(max_length=255)
+    income = models.IntegerField()
+    drivers = models.OneToOneField('Driver', on_delete=models.CASCADE) #Itt tedd fel a kerdest
+
+    def __str__(self):
+        return self.title
