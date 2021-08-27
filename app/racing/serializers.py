@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from core.models import Car, Rating, Driver, Team, TeamNew
+from core.models import Car, Rating, Driver, Team
 
 
 class CarSerializer(serializers.ModelSerializer):

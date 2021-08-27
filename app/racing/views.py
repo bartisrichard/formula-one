@@ -2,7 +2,7 @@ from rest_framework import viewsets, mixins
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
-from core.models import Car, Rating, Driver, Team, TeamNew
+from core.models import Car, Rating, Driver, Team
 
 from racing import serializers
 
@@ -69,7 +69,7 @@ class TeamViewSet(viewsets.ModelViewSet):
 
 class TeamNewViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.TeamNewSerializer
-    queryset = TeamNew.objects.all()
+    queryset = Team.objects.all()
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
 
