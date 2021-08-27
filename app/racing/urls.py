@@ -9,6 +9,7 @@ router.register('cars', views.CarViewSet)
 router.register('ratings', views.RatingViewSet)
 router.register('drivers', views.DriverViewSet)
 router.register('teams', views.TeamViewSet)
+router.register('teamnews', views.TeamNewViewSet)
 
 app_name = 'racing'
 

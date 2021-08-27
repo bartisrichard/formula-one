@@ -77,7 +77,7 @@ class Driver(models.Model):
     rating = models.OneToOneField('Rating', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title
+        return self.name
 
 
 class Team(models.Model):
@@ -88,7 +88,21 @@ class Team(models.Model):
     name = models.CharField(max_length=255)
     principal = models.CharField(max_length=255)
     income = models.IntegerField()
-    drivers = models.OneToOneField('Driver', on_delete=models.CASCADE) #Itt tedd fel a kerdest
+    drivers = models.OneToOneField('Driver', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title
+        return self.name
+
+
+class TeamNew(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+    name = models.CharField(max_length=255)
+    principal = models.CharField(max_length=255)
+    income = models.IntegerField()
+    drivers = models.ManyToManyField('Driver')
+
+    def __str__(self):
+        return self.name
